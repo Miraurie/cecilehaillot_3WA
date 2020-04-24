@@ -1,0 +1,28 @@
+<!-- Page d'édition des pages -->
+<h1>Modifier la page</h1>
+<section class="content space">
+    <p>Vous modifiez la page : <?= $page['label'] ?></p>
+    <form class="content space" method="post">
+        <h2>Le différents textes sur la page</h2>
+        <!-- Pour chaque textes -->
+        <?php foreach ($texts as $text) : ?>
+
+        <div class="form_group">
+            <textarea name="text_<?= intval($text['id']) ?>"><?= $text['contents'] ?></textarea>
+        </div>
+        <?php endforeach ?>
+
+        <?php if (!empty($links)) : ?>
+        <h2>Le différents liens sur la page</h2>
+        <!-- Pour chaque liens-->
+        <?php foreach ($links as $link) : ?>
+        <div class="form_group">
+            <input type="text" name="link_<?= $link['id'] ?>" id="link_<?= $link['id'] ?>" value="<?= $link['src'] ?>">
+        </div>
+        <?php endforeach ?>
+        <?php endif ?>
+        <div class="btns">
+            <input type="submit" value="Envoyer" class="btn_red"> <input type="reset" value="Effacer" class="btn_gray">
+        </div>
+    </form>
+</section>

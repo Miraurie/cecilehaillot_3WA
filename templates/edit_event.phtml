@@ -1,0 +1,42 @@
+<!-- Page Modifier un évènement -->
+<h1>Modifier un évènement</h1>
+<p>Pour modifier une évènement, merci de remplir le formulaire ci-dessous.</p>
+
+<form class="content space" method="post" enctype="multipart/form-data">
+    <div class="form_group">
+        <label for="date">Date</label><input type="date" name="date" value="<?= $event['date'] ?>">
+    </div>
+    <div class="form_group">
+        <label for="type">Type d'évènement</label><input type="text" name="type" value="<?= $event['type'] ?>">
+    </div>
+    <div class="form_group">
+        <label for="place">Lieu de l'évènement</label><input type="text" name="place" value="<?= $event['place'] ?>">
+    </div>
+    <div class="form_group">
+        <label for="who">Organisateur</label><input type="text" name="who" value="<?= $event['who'] ?>">
+    </div>
+    <div class="form_group upload_file">
+        <input type="file" id="reservation" class="input_file" name="reservation" accept=".pdf"
+            data-multiple-caption="{count} files selected"><label for="reservation" class="btn_red label_file"><i
+                class="fas fa-file-upload"></i>
+            <!-- Si l'élement existe -->
+            <?php if (isset($event['reservation'])): ?>
+            <p><?= $file1['title'] ?>.<?= $file1['extension'] ?></p>
+            <?php else : ?>
+            <p>Reservation</p>
+            <?php endif ?>
+        </label>
+        <input type="file" id="playlist" class="input_file" name="playlist" accept=".pdf"><label for="playlist"
+            class="btn_red label_file"><i class="fas fa-file-upload"></i>
+            <!-- Si l'élement existe -->
+            <?php if (isset($$event['playlist'])): ?>
+            <p><?= $file2['title'] ?>.<?= $file2['extension'] ?></p>
+            <?php else : ?>
+            <p>Playlist</p>
+            <?php endif ?>
+        </label>
+    </div>
+    <div class="btns">
+        <input type="submit" value="Envoyer" class="btn_red"> <input type="reset" value="Effacer" class="btn_gray">
+    </div>
+</form>

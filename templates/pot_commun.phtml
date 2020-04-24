@@ -1,0 +1,11 @@
+<!-- Page des pots communs -->
+<h1>Pot-communs</h1>
+<section class="content space">
+    <p class="info"><?= $potC['contents'] ?></p>
+    <!-- pour chaque liens -->
+    <?php foreach ($potClinks as $link): ?>
+    <a href="<?= $link['src'] ?>" target="_blank" class="btn_red w_100">Cliquez ici</a>
+    <?php endforeach ?>
+</section>
+
+<img src="<?=$path ?>img/<?= $img['name'] ?>.<?= $img['extension'] ?>" class="space img_100">

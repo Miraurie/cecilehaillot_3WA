@@ -1,0 +1,144 @@
+<?php
+// Init du path générique
+// Equivalent du if ternaire ci dessous
+// $path = '';
+// if($template !== 'index') {
+//     $path = '../';
+// }
+
+$path = $template !== 'index' ? '../' : '';
+
+// Init session
+if (session_status() == PHP_SESSION_NONE) {
+	// Démarrage du module PHP de gestion des sessions.
+	// Ce qui donne accès à $_SESSION
+	session_start();
+}
+
+?>
+<!-- /////////// GLOBAL /////////// -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<!-- /////////// HEAD /////////// -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
+
+	<link rel="stylesheet" href="<?= $path ?>css/normalize.css">
+	<link rel="stylesheet" href="<?= $path ?>css/style.css">
+	<link rel="icon" type="image/png" href="<?= $path ?>img/logos/cecile.jpg" />
+	<!-- /////////// SEO /////////// -->
+	<title>Cécile Haillot, enseignante country</title>
+	<meta name="Description" content="Cécile Haillot - Animatrice de danse Country Western en ligne ou en couple (partner) dans le 44, Cours renseignement et devis sur simple demande">
+	<meta name="Revisit-After" content="1 day">
+	<meta name="Robots" content="all">
+	<meta name="Rating" content="general">
+	<meta name="Distribution" content="global">
+</head>
+
+<!-- /////////// BODY /////////// -->
+
+<body>
+
+	<!-- /////////// HEADER /////////// -->
+	<header class="flex">
+		<div id="flex_boutons">
+			<a href="<?= $path ?>">
+				<img src="<?=$path ?>img/logos/cecile.jpg" id="logo" alt="Logo, photo de cécile"><!--
+--></a>
+			<a href="javascript:void(0);" class="icon" id="burger" onclick="afficherMenu()">
+				<i class="fas fa-bars"></i>
+			</a>
+		</div>
+		<nav id="nav_header">
+		<!-- Dans chaque liens on va verifier si la variable $template à une certaine valeur et appliquer la classe active dans ce cas -->
+			<a href="<?= $path ?>" <?php if($template === 'index'): ?>class="active" <?php endif ?>>
+				<i class="fas fa-home"></i>
+				Accueil
+			</a>
+			<ul id="dropdown_menu">
+				<li>
+					<a href="javascript:void(0);" onclick="afficherSousMenu()"
+						<?php if($template === 'classes'): ?>class="active" <?php endif ?>>
+						<i class="fas fa-music"></i>
+						Cours
+					</a>
+					<ul id="dropdown-content">
+						<?php foreach ($carte_cours as $cours): ?>
+						<li>
+							<a href="<?= $path ?>controllers/classes.php?id=<?= intval($cours['id']) ?>"><?= htmlspecialchars($cours['city']) ?></a>
+						</li>
+						<?php endforeach ?>
+					</ul>
+				</li>
+			</ul>
+			<a href="<?= $path ?>controllers/events.php" <?php if($template === 'events'): ?>class="active"
+				<?php endif ?>>
+				<i class="fas fa-guitar"></i>
+				Où danser
+			</a>
+			<a href="<?= $path ?>controllers/souvenirs.php" <?php if($template === 'souvenirs'): ?>class="active"
+				<?php endif ?>>
+				<i class="fas fa-camera-retro"></i>
+				Souvenirs
+			</a>
+			<a href="<?= $path ?>controllers/pot_commun.php" <?php if($template === 'pot_commun'): ?>class="active"
+				<?php endif ?>>
+				<i class="fas fa-hat-cowboy-side"></i>
+				Pot commun
+			</a>
+			<a href="<?= $path ?>controllers/faq.php" <?php if($template === 'faq'): ?>class="active" <?php endif ?>>
+				<i class="fas fa-question"></i>
+				FAQ
+			</a>
+			<a href="<?= $path ?>controllers/contact.php" <?php if($template === 'contact'): ?>class="active"
+				<?php endif ?>>
+				<i class="fas fa-envelope"></i>
+				Contact
+			</a>
+			<!-- On affiche cette parrtie que si une personne est connecté -->
+			<?php if (!empty($_SESSION) and array_key_exists('users', $_SESSION)) : ?>
+			<a href="<?= $path ?>controllers/admin.php" <?php if($template === 'admin'): ?>class="active"
+				<?php endif ?>>
+				<i class="fas fa-cogs"></i>
+				Administration
+			</a>
+			<?php endif; ?>
+			<?php if (!empty($_SESSION)) : ?>
+			<div class="item">
+				Bienvenue
+				<?= ucfirst($_SESSION['users']['name']) ?>
+			</div>
+			<div class="item">
+				<a href="<?= $path ?>controllers/logout.php?id=<?= $_SESSION['users']['id'] ?>" class="btn_red">Se
+					déconnecter</a>
+			</div>
+			<?php endif; ?>
+		</nav>
+	</header>
+
+	<!-- /////////// MAIN /////////// -->
+	<main>
+		<!-- Ici on appelle quel template on utilisera pour chaque pages -->
+		<?php include "templates/$template.phtml" ?>
+	</main>
+
+	<!-- /////////// FOOTER /////////// -->
+	<footer>
+		<div id="partners">
+			<a href="#"><img src="<?=$path ?>img/logos/logo_cer.png" alt="logo Country en Retz"></a>
+			<a href="#"><img src="<?=$path ?>img/logos/logo_ffd.jpg" alt="logo externe"></a>
+		</div>
+		<small>
+			Site réalisé par <a href="http://laurieh.fr">LaurieH</a>
+		</small>
+	</footer>
+
+	<script src="<?= $path ?>js/main.js"></script>
+</body>
+
+</html>

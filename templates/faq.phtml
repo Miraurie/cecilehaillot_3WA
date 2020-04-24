@@ -1,0 +1,49 @@
+<!-- Page FAQ -->
+
+<section>
+    <h1 class="space">Foire aux Questions</h1>
+    <!-- Pour chaque questions -->
+    <?php foreach ($faqs as $faq):
+    $img = $db->findOne($query_img,[':id' => $faq['id']]); ?>
+
+    <article class="p_border space">
+        <h2 class="p_index">
+            <?= $faq['question'] ?>
+            <!-- Si l'utilisateur est connecté -->
+            <?php if (!empty($_SESSION) and array_key_exists('users', $_SESSION)) : ?>
+            <div class="faq_admin f_right">
+                <a href="<?= $path ?>controllers/edit_faq.php?id=<?= intval($faq['id']) ?>"><i
+                        class="fas fa-edit"></i></a> <a
+                    href="<?= $path ?>controllers/delete.php?page=faq&table=faq&id=<?= intval($faq['id']) ?>"
+                    onclick="return confirm(`Êtes-vous sûr de vouloir supprimer la question ?`)"><i
+                        class="fas fa-trash-alt"></i></a>
+            </div>
+            <div class="clear"></div>
+            <?php endif ?>
+        </h2>
+
+
+        <?php if ($faq['id_img'] != '') : ?>
+        <img src="<?= $path ?>img/faq/<?= $img['name']?>.<?= $img['extension']?>" alt="<?= $img['alt']?>"
+            class="<?= $float ?>">
+        <?php if ($float == "f_left") {
+                $float = "f_right";
+            } elseif ($float == "f_right") {
+                $float = "f_left";
+            } else {
+                echo "Une erreur s'est produite";
+            } 
+            endif ?>
+        <p><?= nl2br($faq['answer']) ?></p>
+        <div class="clear"></div>
+    </article>
+    <?php endforeach ?>
+</section>
+
+<!-- Si l'utilisateur est connecté -->
+<?php if (!empty($_SESSION) and array_key_exists('users', $_SESSION)) : ?>
+<section class="content space">
+    <a href="<?= $path ?>controllers/add_q.php" class="btn_red space">Ajouter une question</a>
+
+</section>
+<?php endif ?>

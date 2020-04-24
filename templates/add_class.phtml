@@ -1,0 +1,53 @@
+<!-- Page d'ajout d'un cours -->
+<section class="content space">
+    <h1>Ajouter un cours</h1>
+    <p>Pour ajouter un cours, merci de remplir le formulaire ci-dessous.</p>
+
+    <form class="content space" method="post" enctype="multipart/form-data">
+        <div class="form_group">
+            <label for="city">Ville</label><input type="text" name="city" id="city" value="">
+        </div>
+        <div class="form_group">
+            <label for="day">Jour</label><input type="text" name="day" id="day" value="">
+        </div>
+        <div class="form_group">
+            <label for="adress">Adresse</label><input type="text" name="adress" id="adress" value="">
+        </div>
+        <!-- Permet d'afficher plusieurs fois la même chose sur la page -->
+        <?php for ($i=1; $i < 4; $i++) : ?>
+        <div class="form_group">
+            <label for="hour_<?= $i ?>">Horaire <?= $i ?></label><input type="time" name="hour_<?= $i ?>"
+                id="hour_<?= $i ?>">
+        </div>
+        <div class="form_group">
+            <label for="hour_<?= $i ?>_lvl">Niveau(x) demandé</label><input type="text" name="hour_<?= $i ?>_lvl"
+                id="hour_<?= $i ?>_lvl" value="">
+        </div>
+        <div class="form_group">
+            <label for="hour_<?= $i ?>_info">Informations sur l'horaire</label><textarea name="hour_<?= $i ?>_info"
+                id="hour_<?= $i ?>_infos" value=""></textarea>
+        </div>
+        <?php endfor ?>
+        <div class="form_group">
+            <label for="info">Informations sur le cours</label><textarea name="info" id="info" value=""></textarea>
+        </div>
+        <div class="form_group">
+            <label for="text_card">Résumé du cours (ceci sera affiché sur la page d'accueil)</label><textarea name="text_card" id="text_card"
+                value=""></textarea>
+        </div>
+        <div class="form_group upload_file">
+            <input type="file" id="img" class="input_file" name="img" accept="image/jpg,image/png,image/gif"
+                data-multiple-caption="{count} files selected"><label for="img" class="btn_red label_file"><i
+                    class="fas fa-file-upload"></i>
+                <p>image</p>
+            </label>
+        </div>
+        <div class="form_group">
+            <label for="alt_img">Description de l'image</label><input type="text" name="alt_img"
+                id="alt_img" value="">
+        </div>
+        <div class="btns">
+            <input type="submit" value="Envoyer" class="btn_red"> <input type="reset" value="Effacer" class="btn_gray">
+        </div>
+    </form>
+</section>

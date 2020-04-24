@@ -1,0 +1,22 @@
+
+
+<!-- Page de connexion -->
+<h1>Connexion</h1>
+<section class="content space">
+    <p>Pour accéder à cette page, merci de vous enregister</p>
+    <!-- Les messages si l'utilisateur fait une erreur -->
+    <?php if(isset($_GET['mdpE']) && $_GET['mdpE'] === '1'): ?> <p class="actu w100">Il n'y a pas de compte associé à ce nom</p><?php endif ?>
+    <?php if(isset($_GET['mdpE']) && $_GET['mdpE'] === '2'): ?> <p class="actu w100">Le mot de passe indiqué est incorrect</p><?php endif ?>
+
+<form action="<?= $path ?>controllers/login.php" method="post" class="content space">
+<div class="form_group">
+<label for="name"><i class="fas fa-user"></i></label><input type="text" name="name" placeholder="Pseudo">
+</div>
+<div class="form_group">
+    <label for="password"><i class="fas fa-lock"></i></label><input type="password" name="password" placeholder="••••••••">
+</div>
+<div class="btns">
+    <input type="submit" value="Envoyer" class="btn_red">
+</div>
+</form>
+</section>

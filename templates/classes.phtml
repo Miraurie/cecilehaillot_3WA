@@ -1,0 +1,28 @@
+<!-- Page d'un cours -->
+<h1><?= $cour['city'] ?></h1>
+<section class="content flex">
+    <article class="info" id="horaires">
+        <h2><i class="fas fa-clock"></i> Horaires du cours</h2>
+        <?php if ($time1['hour_1'] === $time1['id']): ?>
+        <p><strong><?= htmlspecialchars($time1['hour']) ?></strong> <?= htmlspecialchars($time1['level']) ?>
+            <?= nl2br($time1['descr']) ?></p>
+        <?php endif ?>
+        <?php if ($time2['hour_2'] === $time2['id']): ?>
+        <p><strong><?= htmlspecialchars($time2['hour']) ?></strong> <?= htmlspecialchars($time2['level']) ?>
+            <?= nl2br($time2['descr']) ?></p>
+        <?php endif ?>
+        <?php if ($time3['hour_3'] === $time3['id']): ?>
+        <p><strong><?= htmlspecialchars($time3['hour']) ?></strong> <?= htmlspecialchars($time3['level']) ?>
+            <?= nl2br($time3['descr']) ?></p>
+        <?php endif ?>
+    </article>
+
+    <article class="info" id="class">
+        <h2><i class="fas fa-info-circle"></i>&nbsp;Informations sur le cours</h2>
+        <p>Le cours se déroule le <?= htmlspecialchars($cour['day']) ?><br>
+            <?= nl2br($cour['info'])?></p>
+    </article>
+</section>
+<section id="cou">
+    <img src="../img/cours/<?= $cour['name']?>.<?= $cour['extension']?>" alt="<?= $cour['alt']?>">
+</section>

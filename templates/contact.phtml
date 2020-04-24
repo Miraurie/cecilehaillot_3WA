@@ -1,0 +1,24 @@
+<!-- Page de contact -->
+<h1>Contact</h1>
+<section class="content space"><p class="space">Pour contacter Cécile Haillot, merci de remplir le formulaire ci-dessous.</p>
+<div class="flex">
+    <img src="<?= $path ?>img/<?= $img['name']?>.<?= $img['extension'] ?>" alt="<?= $img['alt'] ?>" id="contact_img">
+<form method="post">
+    <div class="form_group">
+        <label for="sujet">Sujet</label><input type="text" id="sujet" name="sujet" placeholder="A propos de...">
+    </div>
+    <div class="form_group">
+        <label for="mail">Email</label><input type="mail" id="mail" name="mail" placeholder="johndoe@mail.com">
+    </div>
+    <div class="form_group">
+        <label for="msg">Message</label><textarea id="msg" name="msg"
+            placeholder="Ecrivez votre message ici"></textarea>
+    </div>
+    <div class="btns">
+        <input type="submit" class="btn_red" value="Envoyer"> <input type="reset" class="btn_gray" value="Effacer">
+    </div>
+</form>
+</div>
+
+<div><?= $sent ?></div>
+</section>

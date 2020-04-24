@@ -1,0 +1,27 @@
+<!-- Page Ajout de Questions FAQ -->
+<section class="content space">
+    <h1>Ajouter une question</h1>
+    <p>Pour ajouter une question, merci de remplir le formulaire ci-dessous.</p>
+
+    <form class="content space" method="post" enctype="multipart/form-data">
+        <div class="form_group">
+            <label for="question">Question</label><input type="text" name="question" id="question" value="">
+        </div>
+        <div class="form_group">
+            <label for="answer">Réponse</label><textarea name="answer" id="answer"></textarea>
+        </div>
+        <div class="form_group upload_file">
+            <input type="file" id="img" class="input_file" name="img" accept="image/jpg,image/png,image/gif"
+                data-multiple-caption="{count} files selected"><label for="img" class="btn_red label_file"><i
+                    class="fas fa-file-upload"></i>
+                <p>Image</p>
+            </label>
+        </div>
+        <div class="form_group">
+            <label for="alt_img">Description de l'image</label><input type="text" name="alt_img" id="alt_img" value="">
+        </div>
+        <div class="btns">
+            <input type="submit" value="Envoyer" class="btn_red"> <input type="reset" value="Effacer" class="btn_gray">
+        </div>
+    </form>
+</section>

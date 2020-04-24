@@ -1,0 +1,86 @@
+<!-- Page d'ajout d'un cours -->
+<section class="content space">
+    <h1>Modifier un cours</h1>
+    <p>Pour modifier un cours, merci de remplir le formulaire ci-dessous.</p>
+
+    <form class="content space" method="post" enctype="multipart/form-data">
+        <div class="form_group">
+            <label for="city">Ville</label><input type="text" name="city" id="city" value="<?= $cour['city'] ?>">
+        </div>
+        <div class="form_group">
+            <label for="day">Jour</label><input type="text" name="day" id="day" value="<?= $cour['day'] ?>">
+        </div>
+        <div class="form_group">
+            <label for="adress">Adresse</label><input type="text" name="adress" id="adress"
+                value="<?= $cour['adress'] ?>">
+        </div>
+        <div class="form_group">
+            <label for="hour_1">Horaire 1</label><input type="time" name="hour_1" id="hour_1"
+                value="<?= $time1['hour'] ?>">
+        </div>
+        <div class="form_group">
+            <label for="hour_1_lvl">Niveau(x) demandé</label><input type="text" name="hour_1_lvl" id="hour_1_lvl"
+                value="<?= $time1['level'] ?>">
+        </div>
+        <div class="form_group">
+            <label for="hour_1_info">Informations sur l'horaire</label><textarea name="hour_1_info"
+                id="hour_1_infos"><?= $time1['descr'] ?></textarea>
+        </div>
+        <div class="form_group">
+            <label for="hour_2">Horaire 2</label><input type="time" name="hour_2" id="hour_2"
+                value="<?= $time2['hour'] ?>">
+        </div>
+        <div class="form_group">
+            <label for="hour_2_lvl">Niveau(x) demandé</label><input type="text" name="hour_2_lvl" id="hour_2_lvl"
+                value="<?= $time2['level'] ?>">
+        </div>
+        <div class="form_group">
+            <label for="hour_2_info">Informations sur l'horaire</label><textarea name="hour_2_info"
+                id="hour_2_infos"><?= $time2['descr'] ?></textarea>
+        </div>
+        <div class="form_group">
+            <label for="hour_3">Horaire 3</label><input type="time" name="hour_3" id="hour_3"
+                value="<?= $time3['hour'] ?>">
+        </div>
+        <div class="form_group">
+            <label for="hour_3_lvl">Niveau(x) demandé</label><input type="text" name="hour_3_lvl" id="hour_3_lvl"
+                value="<?= $time3['level'] ?>">
+        </div>
+        <div class="form_group">
+            <label for="hour_3_info">Informations sur l'horaire</label><textarea name="hour_3_info" id="hour_3_infos"
+                value=""><?= $time3['descr'] ?></textarea>
+        </div>
+        <div class="form_group">
+            <label for="info">Informations sur le cours</label><textarea name="info" id="info"
+                value=""><?= $cour['info'] ?></textarea>
+        </div>
+        <div class="form_group">
+            <label for="text_card">Résumé du cours (ceci sera affiché sur la page d'accueil)</label><textarea
+                name="text_card" id="text_card" value=""><?= $cour['text_card'] ?></textarea>
+        </div>
+        <!-- Si l'élement existe -->
+        <?php if (isset($cour['id_img'])): ?>
+        <div><img src="<?= $path ?>img/cours/<?= $cour['name'] ?>.<?= $cour['extension'] ?>" alt="<?= $cour['alt'] ?>">
+        </div>
+        <?php endif ?>
+        <div class="form_group upload_file">
+            <input type="file" id="img" class="input_file" name="img" accept="image/jpg,image/png,image/gif"
+                data-multiple-caption="{count} files selected"><label for="img" class="btn_red label_file"><i
+                    class="fas fa-file-upload"></i>
+                <!-- Si l'élement existe -->
+                <?php if (isset($cour['id_img'])): ?>
+                <p><?= $cour['name'] ?>.<?= $cour['extension'] ?></p>
+                <?php else : ?>
+                <p>Image</p>
+                <?php endif ?>
+            </label>
+        </div>
+        <div class="form_group">
+            <label for="alt_img">Description de l'image</label><input type="text" name="alt_img" id="alt_img"
+                value="<?= $cour['alt'] ?>">
+        </div>
+        <div class="btns">
+            <input type="submit" value="Envoyer" class="btn_red"> <input type="reset" value="Effacer" class="btn_gray">
+        </div>
+    </form>
+</section>

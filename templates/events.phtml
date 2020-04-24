@@ -1,0 +1,96 @@
+<!-- Page des evenements -->
+<h1>Evenements</h1>
+<section class="info content">
+    <h2>Où sortir pour danser</h2>
+    <p><?= htmlspecialchars($text1['contents']) ?></p>
+    <a href="<?= htmlspecialchars($link1['src']) ?>" target="_blank" class="btn_red w_100">Le calendrier des sorties de
+        l'Ouest</a>
+    <p><?= htmlspecialchars($text2['contents']) ?></p>
+    <a href="<?= htmlspecialchars($link2['src']) ?>" target="_blank" class="btn_red w_100">Western Line Danse</a>
+    <a href="<?= htmlspecialchars($link3['src']) ?>" target="_blank" class="btn_red w_100">West Cheyenne Attitude 85</a>
+    <a href="<?= htmlspecialchars($link4['src']) ?>" target="_blank" class="btn_red w_100">Goulaine Country</a>
+    <p><?= htmlspecialchars($text3['contents']) ?></p>
+
+</section>
+<section class="content">
+    <table align="center">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Lieu</th>
+                <th>Organisateur</th>
+                <th>Affiche / Réservation</th>
+                <th>Playlist</th>
+
+                <!-- Si l'utilisateur est connecté -->
+                <?php if (!empty($_SESSION) and array_key_exists('users', $_SESSION)) : ?>
+                <th>Editer / Supprimer</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+
+            <!-- Pour chaque evenements -->
+            <?php foreach ($events as $event): ?>
+            <tr>
+                <td><?= $event['date']?></td>
+                <?php if (isset($event['type'])): ?>
+                <td><?= $event['type']?></td>
+                <?php else : ?>
+                <td>A venir</td>
+                <?php endif ?>
+                <!-- Si la valeur existe -->
+                <?php if (isset($event['place'])): ?>
+                <td><?= $event['place']?></td>
+                <?php else : ?>
+                <td>A venir</td>
+                <?php endif ?>
+
+                <!-- Si la valeur existe -->
+                <?php if (isset($event['who'])): ?>
+                <td><?= $event['who']?></td>
+                <?php else : ?>
+                <td>A venir</td>
+                <?php endif ?>
+
+                <!-- Si la valeur existe -->
+                <?php $reservations = $db->findOne($query0,[':id' => $event['id']]); ?>
+                <?php $playlists = $db->findOne($query1,[':id' => $event['id']]);
+                if (isset($reservations['reservation'])):?>
+                <td><a href="<?= $path ?>files/<?= $reservations['title']?>.<?= $reservations['extension'] ?>"
+                        target="_blank">Réservation</a></td>
+                <?php else : ?>
+                <td>A venir</td>
+                <?php endif ?>
+
+                <!-- Si la valeur existe -->
+                <?php if (isset($playlists['playlist'])): ?>
+                <td><a href="<?= $path ?>files/<?= $playlists['title']?>.<?= $playlists['extension'] ?>">Playlist</a>
+                </td>
+                <?php else : ?>
+                <td>A venir</td>
+                <?php endif ?>
+                <!-- Si l'utilisateur est connecté -->
+                <?php if (!empty($_SESSION) and array_key_exists('users', $_SESSION)) : ?>
+                <td class="i_edit"><a href="<?= $path ?>controllers/edit_event.php?id=<?= $event['id']?>"><i
+                            class="fas fa-edit"></i></a> <a
+                        href="<?= $path ?>controllers/delete.php?page=events&table=events&id=<?= intval($event['id']) ?>"><i
+                            class="fas fa-trash-alt"></i></a></td>
+                <?php endif; ?>
+            </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</section>
+<!-- Si l'utilisateur est connecté -->
+<?php if (!empty($_SESSION) and array_key_exists('users', $_SESSION)) : ?>
+<section class="content space">
+
+    <a href="<?= $path ?>controllers/add_event.php" class="btn_red">Ajouter un évènement</a>
+</section>
+<?php endif ?>
+<section id="cou">
+    <img src="<?=$path ?>img/<?= $imgEvent['name'] ?>.<?= $imgEvent['extension'] ?>">
+</section>
+<div class="space"></div>

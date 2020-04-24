@@ -1,0 +1,49 @@
+<h1>Administration</h1>
+<section class="content space">
+    <article class="space">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cours</th>
+                    <th>Editer/Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Pour chaque cours -->
+                <?php foreach ($carte_cours as $cours):?>
+                <tr>
+                    <td><?= $cours['city'] ?></td>
+                    <td class="i_edit"><a
+                            href="<?= $path ?>controllers/edit_class.php?id=<?= intval($cours['id']) ?>"><i
+                                class="fas fa-edit"></i></a>
+                        <a
+                            href="<?= $path ?>controllers/delete.php?page=admin&table=cours&id=<?= intval($cours['id']) ?>"><i
+                                class="fas fa-trash-alt"></i></a></td>
+                </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+        <a href="<?= $path ?>controllers/add_class.php" class="btn_red space">Ajouter un cours</a>
+    </article>
+    <article>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pages</th>
+                    <th>Editer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Pour chaque pages -->
+                <?php foreach ($pages as $page) :?>
+                <tr>
+                    <td><?= $page['label'] ?></td>
+                    <td class="i_edit"><a href="<?= $path ?>controllers/edit_page.php?id=<?= intval($page['id']) ?>"><i
+                                class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </article>
+</section>

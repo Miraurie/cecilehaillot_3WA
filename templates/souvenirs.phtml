@@ -1,0 +1,16 @@
+<!-- Page des souvenirs photos et vidéos -->
+<section id="grille">
+	<!-- Pour chaque images -->
+	<?php $i=1; 
+	foreach($imgs as $img): ?>
+	<img src="<?= $path ?>img/souvenirs/<?= $img['name'] ?>.<?= $img['extension'] ?>" alt="<?= $img['alt'] ?>" id="_<?= $i ?>"
+		class="case">
+	<?php $i = $i+1;
+	endforeach ?>
+</section>
+<!-- pour afficher l'image en plus grand -->
+<div id="myModal" class="modal">
+	<span class="close"><i class="fas fa-times"></i></span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+</div>
