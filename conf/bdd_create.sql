@@ -64,7 +64,7 @@ CREATE TABLE `pages`(
 -- On créé la table texts
 CREATE TABLE `texts`(
     `id` SMALLINT(255) NOT NULL,
-    `content` TEXT NOT NULL,
+    `contents` TEXT NOT NULL,
     `id_pages` TINYINT(20) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
