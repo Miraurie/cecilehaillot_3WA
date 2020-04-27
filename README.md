@@ -9,6 +9,8 @@ Dans un premier temps il est demandé d'importer la base de données sur un serv
 
 Puis il faudra mettre les fichier dans le dossier que votre serveur utilisera.
 
+Une version de test est disponible [ici]http://laurieh.fr/cecilehaillot
+
 ## Utilisation
 
 La partie administration est cachée afin que un utilisateur ne faisant pas partie de l'administration n'y accède pas. Il faudra d'abord vous connecter en entrant dans l'url `http://localhost/cecilehaillot/controlers/login.php`
