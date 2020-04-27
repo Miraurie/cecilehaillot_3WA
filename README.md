@@ -9,7 +9,7 @@ Dans un premier temps il est demandé d'importer la base de données sur un serv
 
 Puis il faudra mettre les fichier dans le dossier que votre serveur utilisera.
 
-Une version de test est disponible [ici]http://laurieh.fr/cecilehaillot
+Une version de test est disponible [ici](http://laurieh.fr/cecilehaillot)
 
 ## Utilisation
 
