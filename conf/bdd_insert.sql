@@ -226,7 +226,7 @@ VALUES(
     3
 ),(
     20,
-    'presse_cécile_initiation',
+    'presse_cecile_initiation',
     'JPG',
     'Photo de Cécile donnant une initiation, photo utilisée dans la presse',
     3
@@ -244,19 +244,19 @@ VALUES(
     3
 ),(
     23,
-    'réveillon_st_viaud_2019_01',
+    'reveillon_st_viaud_2019_01',
     'jpg',
     'Réveillon du nouvel an 2019, Saint Viaud',
     3
 ),(
     24,
-    'réveillon_st_viaud_2019_02',
+    'reveillon_st_viaud_2019_02',
     'jpg',
     'Réveillon du nouvel an 2019, Saint Viaud',
     3
 ),(
     25,
-    'réveillon_st_viaud_2019_03',
+    'reveillon_st_viaud_2019_03',
     'jpg',
     'Réveillon du nouvel an 2019, Saint Viaud',
     3
@@ -295,7 +295,7 @@ VALUES(0, 'index', 'Index'),(1, 'classes', 'Cours'),(2, 'events', 'Où danser'),
 ),(7, 'contact', 'Contact');
  
 -- On ajoute le contenu dans la table texts
-INSERT INTO `texts`(`id`, `content`, `id_pages`)
+INSERT INTO `texts`(`id`, `contents`, `id_pages`)
 VALUES(
     0,
     'Cécile donne des cours en Loire Atlantique dans le Pays de Retz',

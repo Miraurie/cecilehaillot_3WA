@@ -143,7 +143,7 @@ ALTER TABLE
 ALTER TABLE
     `time` ADD PRIMARY KEY(`id`),
     MODIFY `id` TINYINT(10) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 1;
+    AUTO_INCREMENT = 0;
 
 -- On ajoute les clés et contraintes à la table users
 ALTER TABLE
